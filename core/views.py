@@ -13,6 +13,6 @@ def home(request):
 def something_cool(request):
     context = {
         "test": "something_cool",
-        "static": settings.STATIC_DIR,
+        "static": settings.STATICFILES_DIRS[0],
     }
     return render(request, "core/something_cool.html", context=context)

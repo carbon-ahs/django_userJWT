@@ -1,3 +1,1 @@
- 
-"# django_DJANGO" 
-"# django_placeholderProject" 
+# Just a placeholder project with most of settings included
