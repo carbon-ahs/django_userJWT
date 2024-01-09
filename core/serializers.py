@@ -14,6 +14,7 @@ class UserCreateSerializer(BaseUserCreateSerializer):
             "username",
             "password",
             "email",
+            "phone",
             "first_name",
             "last_name",
         ]
@@ -25,6 +26,7 @@ class UserSerializer(BaseUserSerializer):
             "id",
             "username",
             "email",
+            "phone",
             "first_name",
             "last_name",
         ]

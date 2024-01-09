@@ -1,4 +1,7 @@
+from pprint import pprint
 from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import UserManager
+from django.db.models import Q
 from django.db import models
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
@@ -26,5 +29,17 @@ class CoreModelTest(models.Model):
         return coreModelObject
 
 
+class CustomUserManager(UserManager):
+    def get_by_natural_key(self, username):
+        pprint(self.model.phone)
+        return self.get(
+            Q(**{self.model.USERNAME_FIELD: username})
+            | Q(**{self.model.EMAIL_FIELD: username})
+            # | Q(**{self.model.phone: username})
+        )
+
+
 class User(AbstractUser):
     email = models.EmailField(unique=True)
+    phone = models.CharField(max_length=255)
+    objects = CustomUserManager()
